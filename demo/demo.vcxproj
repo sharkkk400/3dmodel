@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{03BC8F33-4E9E-4C3D-950C-8F2DE4B58DE1}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.17763.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>5.12.9_msvc2017_64</QtInstall>
+    <QtModules>core;opengl;gui;widgets;openglextensions;</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>5.12.9_msvc2017_64</QtInstall>
+    <QtModules>
+    </QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>..\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LibraryPath>..\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalDependencies>assimp-vc140-mt.lib;%(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="dashline.h" />
+    <ClInclude Include="line.h" />
+    <ClInclude Include="SelectFrame.h" />
+    <ClInclude Include="square_tex.h" />
+    <ClInclude Include="transAxis.h" />
+    <QtMoc Include="mButton.h" />
+    <ClInclude Include="arc.h" />
+    <ClInclude Include="Cone.h" />
+    <ClInclude Include="cube.h" />
+    <ClInclude Include="cylinder.h" />
+    <ClInclude Include="meshComponent.h" />
+    <ClInclude Include="moveAxis.h" />
+    <ClInclude Include="rotateAxis.h" />
+    <ClInclude Include="scaleAxis.h" />
+    <ClInclude Include="sphere.h" />
+    <ClInclude Include="square.h" />
+    <QtMoc Include="workclass.h" />
+    <QtMoc Include="ColorSelect.h" />
+    <ClInclude Include="Axis.h" />
+    <ClInclude Include="headers.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="meshNode.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="modelCube.h" />
+    <ClInclude Include="parameter.h" />
+    <QtMoc Include="m_qopenglwidget.h" />
+    <QtMoc Include="mMainWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="arc.cpp" />
+    <ClCompile Include="Axis.cpp" />
+    <ClCompile Include="ColorSelect.cpp" />
+    <ClCompile Include="Cone.cpp" />
+    <ClCompile Include="cube.cpp" />
+    <ClCompile Include="cylinder.cpp" />
+    <ClCompile Include="dashline.cpp" />
+    <ClCompile Include="line.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mButton.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="meshComponent.cpp" />
+    <ClCompile Include="meshNode.cpp" />
+    <ClCompile Include="mMainWindow.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="modelCube.cpp" />
+    <ClCompile Include="moveAxis.cpp" />
+    <ClCompile Include="m_qopenglwidget.cpp" />
+    <ClCompile Include="parameter.cpp" />
+    <ClCompile Include="rotateAxis.cpp" />
+    <ClCompile Include="scaleAxis.cpp" />
+    <ClCompile Include="SelectFrame.cpp" />
+    <ClCompile Include="sphere.cpp" />
+    <ClCompile Include="square.cpp" />
+    <ClCompile Include="square_tex.cpp" />
+    <ClCompile Include="transAxis.cpp" />
+    <ClCompile Include="workclass.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
